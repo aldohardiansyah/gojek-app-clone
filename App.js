@@ -1,65 +1,81 @@
 import React, {useState} from 'react';
-import {View, Text, Image, StyleSheet, FlatList, Alert} from 'react-native';
-import Header from './components/Header';
-import { uuid } from 'uuidv4';
-
-import ListItem from './components/ListItem';
-import AddItem from './components/AddItem';
+import {View, Text, Image,StyleSheet, TextInput  } from 'react-native';
 
 
 const App = () => {
 
-  const [items,setItems] = useState([
-    {id: uuid(), text: 'Milk'},
-    {id: uuid(), text: 'Egg'},
-    {id: uuid(), text: 'Bread'},
-    {id: uuid(), text: 'Apple'},
-    {id: uuid(), text: 'Juice'}
-  ]);
-
-  const deleteItem = id => {
-    setItems(prevsItem => {
-      return prevsItem.filter(item => item.id != id);
-    });
-  };
-  const addItem = text => {
-    if(!text){
-      Alert.alert('Error', 'Please enter an Item',  [{text: 'Ok' }]);
-    }else{
-      setItems(prevsItem => {
-        return [{id:uuid(), text},...prevsItem];
-      });
-    }
-  };
-
-
-
   return (
-    <View style={style.container}>
-      <Header title="Welcome to Aurora"/>
-      <AddItem addItem={addItem}/>
-      {/* <Text style={style.text}>Hello World</Text>
-      <Image source={{uri:'https://gitlab.com/uploads/-/system/user/avatar/4288201/avatar.png'}} style={style.img}></Image> */}
-      <FlatList 
-        data={items} 
-        renderItem={({item}) => <ListItem item={item} deleteItem={deleteItem}/> }
-      />
+    <View style={{flex:1}}>
+      {/* <Text>Test Gojek</Text> */}
+      <View style={{backgroundColor:'white', flex:1}}>
+        <View style={{marginHorizontal: 17, flexDirection:'row', paddingTop: 15}}>
+          <View style={{position:'relative', flex: 1}}>
+            <TextInput style={style.homeSearchBar} placeholder='What do you want for eat ?'></TextInput>
+            <Image style={{position: 'absolute', top: 8, left: 12}} source={require('./assets/icon/search.png')}></Image>
+          </View>
+          <View style={{width:35, alignItems:'center', justifyContent:'center'}}>
+          <Image style={style.navButtonIcon} source={require('./assets/icon/home-active.png')}/>
+          </View>
+        </View>
+      </View>
+
+
+      <View style={{backgroundColor:'#fff', height: 70, flexDirection:'row'}}>
+          <View style={style.navButton}>
+            <Image style={style.navButtonIcon} source={require('./assets/icon/home-active.png')}/>
+            <Text style={style.navButtonTitleActive}>Home</Text>
+          </View>
+
+          <View style={style.navButton}>
+            <Image style={style.navButtonIcon} source={require('./assets/icon/order.png')}/>
+            <Text style={style.navButtonTitle}>Orders</Text>
+          </View>
+
+          <View style={style.navButton}>
+            <Image style={style.navButtonIcon} source={require('./assets/icon/help.png')}/>
+            <Text style={style.navButtonTitle}>Help</Text>
+          </View>
+
+          <View style={style.navButton}>
+            <Image style={style.navButtonIcon} source={require('./assets/icon/inbox.png')}/>
+            <Text style={style.navButtonTitle}>Inbox</Text>
+          </View>
+
+          <View style={style.navButton}>
+            <Image style={style.navButtonIcon} source={require('./assets/icon/account.png')}/>
+            <Text style={style.navButtonTitle}>Account</Text>
+          </View>
+          
+      </View>
     </View>
   )
 };
 
 const style = StyleSheet.create({
-  container: {
-    flex: 1, 
+  navButton: {
+    flex:1, alignItems:"center", justifyContent:'center'
   },
-  text: {
-    color: "darkslateblue", 
-    fontSize: 30,
+  navButtonIcon: {
+    width:26,
+    height:26,
+    marginBottom:5,
+    backgroundColor:'#fff'
   },
-  img: {
-    height: 100,
-    width: 100,
-    borderRadius:50
+  navButtonTitle : {
+    color:'#545454'
+  },
+  navButtonTitleActive : {
+    color:'#43AB4A'
+  },
+  homeSearchBar :{
+    borderWidth:1, 
+    borderColor:'#e8e8e8',
+    height:45,
+    borderRadius:25,
+    fontSize:13,
+    paddingLeft:45,
+    paddingRight: 20,
+    backgroundColor: 'white'
   }
 });
 
