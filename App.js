@@ -1,113 +1,107 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+/* eslint-disable react-native/no-inline-styles */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, TextInput} from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
+const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
+    <View style={{flex: 1}}>
+      {/* <Text>Test Gojek</Text> */}
+      <View style={{backgroundColor: 'white', flex: 1}}>
+        <View
+          style={{marginHorizontal: 17, flexDirection: 'row', paddingTop: 15}}>
+          <View style={{position: 'relative', flex: 1}}>
+            <TextInput
+              style={style.homeSearchBar}
+              placeholder="What do you want for eat ?"
+            />
+            <Image
+              style={{position: 'absolute', top: 8, left: 12}}
+              source={require('./assets/icon/search.png')}
+            />
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+          <View
+            style={{width: 35, alignItems: 'center', justifyContent: 'center'}}>
+            <Image
+              style={style.navButtonIcon}
+              source={require('./assets/icon/home-active.png')}
+            />
+          </View>
+        </View>
+      </View>
+
+      <View style={{backgroundColor: '#fff', height: 70, flexDirection: 'row'}}>
+        <View style={style.navButton}>
+          <Image
+            style={style.navButtonIcon}
+            source={require('./assets/icon/home-active.png')}
+          />
+          <Text style={style.navButtonTitleActive}>Home</Text>
+        </View>
+
+        <View style={style.navButton}>
+          <Image
+            style={style.navButtonIcon}
+            source={require('./assets/icon/order.png')}
+          />
+          <Text style={style.navButtonTitle}>Orders</Text>
+        </View>
+
+        <View style={style.navButton}>
+          <Image
+            style={style.navButtonIcon}
+            source={require('./assets/icon/help.png')}
+          />
+          <Text style={style.navButtonTitle}>Help</Text>
+        </View>
+
+        <View style={style.navButton}>
+          <Image
+            style={style.navButtonIcon}
+            source={require('./assets/icon/inbox.png')}
+          />
+          <Text style={style.navButtonTitle}>Inbox</Text>
+        </View>
+
+        <View style={style.navButton}>
+          <Image
+            style={style.navButtonIcon}
+            source={require('./assets/icon/account.png')}
+          />
+          <Text style={style.navButtonTitle}>Account Test</Text>
+        </View>
+      </View>
+    </View>
   );
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+const style = StyleSheet.create({
+  navButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  navButtonIcon: {
+    width: 26,
+    height: 26,
+    marginBottom: 5,
+    backgroundColor: '#fff',
   },
-  body: {
-    backgroundColor: Colors.white,
+  navButtonTitle: {
+    color: '#545454',
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  navButtonTitleActive: {
+    color: '#43AB4A',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  homeSearchBar: {
+    borderWidth: 1,
+    borderColor: '#e8e8e8',
+    height: 45,
+    borderRadius: 25,
+    fontSize: 13,
+    paddingLeft: 45,
+    paddingRight: 20,
+    backgroundColor: 'white',
   },
 });
 
