@@ -6,7 +6,7 @@ import {View, Text, Image, StyleSheet, TextInput} from 'react-native';
 const App = () => {
   return (
     <View style={{flex: 1}}>
-      {/* <Text>Test Gojek</Text> */}
+      {/* <Text>Gojek App Clone</Text> */}
       <View style={{backgroundColor: 'white', flex: 1}}>
         <View
           style={{marginHorizontal: 17, flexDirection: 'row', paddingTop: 15}}>
