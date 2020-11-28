@@ -68,7 +68,7 @@ const App = () => {
             style={style.navButtonIcon}
             source={require('./assets/icon/account.png')}
           />
-          <Text style={style.navButtonTitle}>Account Test</Text>
+          <Text style={style.navButtonTitle}>Account</Text>
         </View>
       </View>
     </View>
